@@ -103,7 +103,10 @@ strong {
 }
 
 .preamble-picture {
-    border-radius: 50%;
+    /* Removing border-radius to show image in its original shape */
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
 }
 
 .preamble-name {

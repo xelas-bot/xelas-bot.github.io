@@ -12,10 +12,10 @@ const Content: React.FC = () => {
       <h3>Currently</h3>
       
       <ul>
-        <li>TAing for <a href="#">Logic & Computation</a></li>
-        <li>Surviving my final semester</li>
-        <li>Configuring my heavy <a href="#">Emacs and NixOS workflow</a></li>
-        <li>Managing various self-hosted applications on my server</li>
+        <li>Working on options market making strategies at <a href="https://www.virtu.com/">Virtu Financial</a></li>
+        <li>Traveling the world</li>
+        <li>Lifting weights</li>
+        <li>Learning Chinese</li>
       </ul>
     </div>
   );

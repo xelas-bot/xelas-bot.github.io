@@ -7,9 +7,9 @@ const Preamble: React.FC = () => {
         className="preamble-picture" 
         src="/static/profile/profile.webp" 
         alt="Profile" 
-        width="80px"
+        width="250px"
       />
-      <strong className="preamble-name">Lucas Sta Maria</strong>
+      <strong className="preamble-name">Shrey Patel</strong>
       <p className="preamble-summary">
         I'm a final year Computer Science and Mathematics student at Northeastern
         University interested in programming languages and developer tooling.
