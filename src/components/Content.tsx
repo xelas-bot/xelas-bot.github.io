@@ -14,8 +14,8 @@ const Content: React.FC = () => {
       <ul>
         <li>Working on options market making strategies at <a href="https://www.virtu.com/">Virtu Financial</a></li>
         <li>Traveling the world</li>
-        <li>Lifting weights</li>
-        <li>Learning Chinese</li>
+        <li>Training to dunk a basketball</li>
+        <li>在学习中文 (Learning Chinese)</li>
       </ul>
     </div>
   );
