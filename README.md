@@ -1,54 +1,40 @@
-# Personal Website with React and Tailwind CSS
+# Personal Website
 
-This is a personal website built with React, Vite, and Tailwind CSS.
+This is a React implementation of a personal website, modeled after a minimalist design. The site is built using:
 
-## Technologies Used
+- React for UI components
+- TypeScript for type safety
+- Vite for fast development and optimized builds
+- CSS for styling
 
-- [React](https://react.dev/) - JavaScript library for building user interfaces
-- [Vite](https://vitejs.dev/) - Fast build tool and development server
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [React Router](https://reactrouter.com/) - Routing for React applications
-- [Headless UI](https://headlessui.com/) - Unstyled, accessible UI components
-- [Heroicons](https://heroicons.com/) - Beautiful SVG icons
+## Project Structure
+
+- `src/` - Source code
+  - `components/` - React components
+  - `assets/` - CSS and other assets
+- `public/` - Static files served as-is
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v18+)
-- npm (v9+)
-
-### Installation
-
 1. Clone the repository
-   ```bash
-   git clone <repository-url>
-   cd <repository-name>
-   ```
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+4. Build for production: `npm run build`
 
-2. Install dependencies
-   ```bash
-   npm install
-   ```
+## Customization
 
-3. Start the development server
-   ```bash
-   npm run dev
-   ```
+You can customize this website by:
 
-4. Open your browser and navigate to `http://localhost:5173`
+1. Modifying the content in the React components
+2. Updating the CSS styles
+3. Adding new pages and components
 
-## Build for Production
+## Dependencies
 
-```bash
-npm run build
-```
+- React 18
+- TypeScript
+- Vite
 
-The build output will be in the `dist` directory, which can be deployed to any static hosting service.
+## License
 
-## Customize
-
-- Edit `src/App.jsx` to modify the main application
-- Add your components in the `src/components` directory
-- Modify styling using Tailwind CSS utility classes
-- Configure Tailwind in `tailwind.config.js`
+ISC 
