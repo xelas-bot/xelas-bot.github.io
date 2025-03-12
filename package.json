@@ -21,7 +21,8 @@
   "homepage": "https://github.com/xelas-bot/xelas-bot.github.io#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

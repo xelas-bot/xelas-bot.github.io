@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,10 +28,10 @@ const Preamble: React.FC = () => {
         <li><a className="preamble-link" href="mailto:shreyp941@gmail.com">@</a></li>
       </ul>
       <ul className="nav-links">
-        <li><a className="nav-link" href="/">Home</a></li>
-        <li><a className="nav-link" href="/blog">Blog</a></li>
-        <li><a className="nav-link" href="/experience">Experience</a></li>
-        <li><a className="nav-link" href="/about">About</a></li>
+        <li><Link className="nav-link" to="/">Home</Link></li>
+        <li><Link className="nav-link" to="/blog">Blog</Link></li>
+        <li><Link className="nav-link" to="/experience">Experience</Link></li>
+        <li><Link className="nav-link" to="/projects">Projects</Link></li>
       </ul>
     </>
   );
