@@ -102,6 +102,10 @@ strong {
     font-size: 0.9em;
 }
 
+a {
+    color: inherit;
+}
+
 .preamble-picture {
     /* Removing border-radius to show image in its original shape */
     max-width: 100%;

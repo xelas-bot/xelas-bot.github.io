@@ -4,9 +4,9 @@ const Content: React.FC = () => {
   return (
     <div>
       <p>
-        I'm broadly interested in developer tools, programming languages, and distributed 
-        systems. I have a particular interest in the Racket programming language for programming 
-        languages, the Nix reproducible build system, and the Emacs extensible editor.
+      I'm broadly interested in highly distributed and performant
+      systems, statistical modeling, and machine learning. Previously, I helped organize <a href="https://cs128.org/archives/2021c/directory">cs126</a> as a CA and 
+      also conducted post graduate research on <a href="https://www.linkedin.com/in/shrey-patel-b3b08a186/overlay/1635554774569/single-media-viewer/?profileId=ACoAACvLMd8BmzrZLjs82yHPrWkubdVxWfQy-iw">adversarial attacks</a> and perception/controls for self driving cars
       </p>
       
       <h3>Currently</h3>

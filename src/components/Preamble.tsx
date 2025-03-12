@@ -1,5 +1,8 @@
 import React from 'react';
 
+
+
+
 const Preamble: React.FC = () => {
   return (
     <>
@@ -7,21 +10,21 @@ const Preamble: React.FC = () => {
         className="preamble-picture" 
         src="/static/profile/profile.webp" 
         alt="Profile" 
-        width="250px"
+        width="350px"
       />
-      <strong className="preamble-name">Shrey Patel</strong>
+      <strong className="preamble-name">shrey patel</strong>
       <p className="preamble-summary">
-        I'm a final year Computer Science and Mathematics student at Northeastern
-        University interested in programming languages and developer tooling.
+        somewhat of a computer scientist from the University of Illinois, prev at:
+        <li><a href="https://www.jumptrading.com/">jump trading</a></li>
+        <li><a href="https://www.imc.com/us">imc trading</a></li>
+        <li><a href="https://ramp.com/">ramp</a></li>
+        <li><a href="https://www.nasa.gov/">nasa</a></li>
       </p>
-      <code className="preamble-code">
-        (λx.x x) (λx.x x)
-      </code>
       <ul className="preamble-links">
-        <li><a className="preamble-link" href="https://github.com/priime0">GitHub</a></li>
-        <li><a className="preamble-link" href="https://linkedin.com/in/lucas-sta-maria">LinkedIn</a></li>
+        <li><a className="preamble-link" href="https://github.com/xelas-bot">GitHub</a></li>
+        <li><a className="preamble-link" href="https://www.linkedin.com/in/shrey-patel-b3b08a186/">LinkedIn</a></li>
         <li><a className="preamble-link" href="#resume">Resume</a></li>
-        <li><a className="preamble-link" href="mailto:lucas@priime.dev">@</a></li>
+        <li><a className="preamble-link" href="mailto:shreyp941@gmail.com">@</a></li>
       </ul>
       <ul className="nav-links">
         <li><a className="nav-link" href="/">Home</a></li>
