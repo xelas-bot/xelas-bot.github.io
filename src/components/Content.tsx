@@ -16,7 +16,7 @@ const HomeContent: React.FC = () => {
       
       <ul>
         <li>Working on options market making strategies at <a href="https://www.virtu.com/">Virtu Financial</a></li>
-        <li><Link to="/travel">Traveling the world</Link></li>
+        <li><a href="/travel">Traveling the world</a></li>
         <li>Training to dunk a basketball</li>
         <li>在学习中文 (Learning Chinese)</li>
       </ul>

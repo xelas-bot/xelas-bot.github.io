@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
+      "three-nodes": "three/examples/jsm/nodes",
     },
   },
   server: {
@@ -17,4 +18,4 @@ export default defineConfig({
     outDir: 'dist',
     minify: 'terser',
   },
-}); 
+});
