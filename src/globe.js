@@ -15,18 +15,22 @@ import {
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { createGlowMesh } from "three-glow-mesh";
 import countries from "./globe_files/globe-data-min.json";
-import travelHistory from "./globe_files/my-flights.json";
-import airportHistory from "./globe_files/my-airports.json";
+import travelHistory from "./globe_files/cleaned_flights.json";
+import airportHistory from "./globe_files/cleaned_airports.json";
 var renderer, camera, scene, controls;
 let mouseX = 0;
 let mouseY = 0;
 let windowHalfX = window.innerWidth / 2;
 let windowHalfY = window.innerHeight / 2;
 var Globe;
+// Animation control variables
+let animationFrameId = null;
+let isPageVisible = true;
 
 init();
 initGlobe();
 onWindowResize();
+initVisibilityControl();
 animate();
 
 // SECTION Initializing core ThreeJS elements
@@ -95,6 +99,45 @@ function init() {
   document.addEventListener("mousemove", onMouseMove);
 }
 
+// Function to initialize page visibility control
+function initVisibilityControl() {
+  // Handle page visibility change
+  document.addEventListener('visibilitychange', handleVisibilityChange, false);
+  
+  // Handle iframe visibility
+  // This is needed when the globe is embedded in an iframe
+  window.addEventListener('blur', pauseAnimation, false);
+  window.addEventListener('focus', resumeAnimation, false);
+  
+  // If iframe parent page is using React Router or other SPA navigation
+  // these listeners will help detect when the user navigates away
+  window.addEventListener('pagehide', pauseAnimation, false);
+  window.addEventListener('pageshow', resumeAnimation, false);
+}
+
+function handleVisibilityChange() {
+  if (document.hidden) {
+    pauseAnimation();
+  } else {
+    resumeAnimation();
+  }
+}
+
+function pauseAnimation() {
+  isPageVisible = false;
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+  }
+}
+
+function resumeAnimation() {
+  if (!isPageVisible) {
+    isPageVisible = true;
+    animate();
+  }
+}
+
 // SECTION Globe
 function initGlobe() {
   // Initialize the Globe
@@ -121,34 +164,38 @@ function initGlobe() {
   // NOTE Arc animations are followed after the globe enters the scene
   setTimeout(() => {
     Globe.arcsData(travelHistory.flights)
+      .arcStartLat((e) => e.flight_route.src_airport.latitude)
+      .arcStartLng((e) => e.flight_route.src_airport.longitude)
+      .arcEndLat((e) => e.flight_route.dst_airport.latitude)
+      .arcEndLng((e) => e.flight_route.dst_airport.longitude)
       .arcColor((e) => {
-        return e.status ? "#9cff00" : "#FF4000";
+        return "#9cff00";
       })
-      .arcAltitude((e) => {
-        return e.arcAlt;
-      })
-      .arcStroke((e) => {
-        return e.status ? 0.5 : 0.3;
-      })
+      // .arcStroke((e) => { can scale with distance
+      //   return 0.5;
+      // })
       .arcDashLength(0.9)
-      .arcDashGap(4)
+      .arcDashGap(1)
       .arcDashAnimateTime(1000)
-      .arcsTransitionDuration(1000)
-      .arcDashInitialGap((e) => e.order * 1)
+      .arcDashInitialGap((e) => 1)
       .labelsData(airportHistory.airports)
+      .labelLat("latitude")
+      .labelLng("longitude")
       .labelColor(() => "#ffcb21")
       .labelDotOrientation((e) => {
-        return e.text === "ALA" ? "top" : "right";
+        return e.airport_code === "DFW" ? "top" : "right";
       })
       .labelDotRadius(0.3)
-      .labelSize((e) => e.size)
+      .labelSize((e) => 1.0)
       .labelText("city")
       .labelResolution(6)
       .labelAltitude(0.01)
       .pointsData(airportHistory.airports)
+      .pointLat("lat")
+      .pointLng("lng")
       .pointColor(() => "#ffffff")
       .pointsMerge(true)
-      .pointAltitude(0.07)
+      .pointAltitude(0.05)
       .pointRadius(0.05);
   }, 1000);
 
@@ -181,6 +228,8 @@ function onWindowResize() {
 }
 
 function animate() {
+  if (!isPageVisible) return;
+  
   camera.position.x +=
     Math.abs(mouseX) <= windowHalfX / 2
       ? (mouseX / 2 - camera.position.x) * 0.005
@@ -189,5 +238,5 @@ function animate() {
   camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
-  requestAnimationFrame(animate);
+  animationFrameId = requestAnimationFrame(animate);
 }
