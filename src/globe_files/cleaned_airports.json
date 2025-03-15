@@ -2,100 +2,12 @@
     "type": "AirportCollection",
     "airports": [
         {
-            "airport_code": "ORD",
-            "airport_name": "Chicago O'Hare International Airport",
-            "city": "Chicago",
-            "country": "US",
-            "latitude": 41.97859955,
-            "longitude": -87.90480042
-        },
-        {
-            "airport_code": "LAX",
-            "airport_name": "Los Angeles International Airport",
-            "city": "Los Angeles",
-            "country": "US",
-            "latitude": 33.94250107,
-            "longitude": -118.4079971
-        },
-        {
-            "airport_code": "DEN",
-            "airport_name": "Denver International Airport",
-            "city": "Denver",
-            "country": "US",
-            "latitude": 39.86169815,
-            "longitude": -104.67299652
-        },
-        {
             "airport_code": "MDW",
             "airport_name": "Chicago Midway International Airport",
             "city": "Chicago",
             "country": "US",
             "latitude": 41.7859993,
             "longitude": -87.75240326
-        },
-        {
-            "airport_code": "JTR",
-            "airport_name": "Santorini Airport",
-            "city": "Santorini Island",
-            "country": "GR",
-            "latitude": 36.39920044,
-            "longitude": 25.47929955
-        },
-        {
-            "airport_code": "ATH",
-            "airport_name": "Eleftherios Venizelos International Airport",
-            "city": "Athens",
-            "country": "GR",
-            "latitude": 37.93640137,
-            "longitude": 23.94449997
-        },
-        {
-            "airport_code": "LGA",
-            "airport_name": "La Guardia Airport",
-            "city": "New York",
-            "country": "US",
-            "latitude": 40.77719879,
-            "longitude": -73.87259674
-        },
-        {
-            "airport_code": "DFW",
-            "airport_name": "Dallas Fort Worth International Airport",
-            "city": "Dallas-Fort Worth",
-            "country": "US",
-            "latitude": 32.89680099,
-            "longitude": -97.03800201
-        },
-        {
-            "airport_code": "CMI",
-            "airport_name": "University of Illinois Willard Airport",
-            "city": "Champaign/Urbana",
-            "country": "US",
-            "latitude": 40.03919983,
-            "longitude": -88.27809906
-        },
-        {
-            "airport_code": "PHX",
-            "airport_name": "Phoenix Sky Harbor International Airport",
-            "city": "Phoenix",
-            "country": "US",
-            "latitude": 33.43429947,
-            "longitude": -112.01200104
-        },
-        {
-            "airport_code": "EWR",
-            "airport_name": "Newark Liberty International Airport",
-            "city": "Newark",
-            "country": "US",
-            "latitude": 40.69250107,
-            "longitude": -74.16870117
-        },
-        {
-            "airport_code": "HND",
-            "airport_name": "Tokyo International Airport",
-            "city": "Tokyo",
-            "country": "JP",
-            "latitude": 35.5522995,
-            "longitude": 139.77999878
         },
         {
             "airport_code": "DAL",
@@ -106,60 +18,36 @@
             "longitude": -96.85179901
         },
         {
-            "airport_code": "SFO",
-            "airport_name": "San Francisco International Airport",
-            "city": "San Francisco",
-            "country": "US",
-            "latitude": 37.61899948,
-            "longitude": -122.375
-        },
-        {
-            "airport_code": "SAN",
-            "airport_name": "San Diego International Airport",
-            "city": "San Diego",
-            "country": "US",
-            "latitude": 32.73360062,
-            "longitude": -117.19000244
-        },
-        {
-            "airport_code": "CPH",
-            "airport_name": "Copenhagen Kastrup Airport",
-            "city": "Copenhagen",
-            "country": "DK",
-            "latitude": 55.61790085,
-            "longitude": 12.65600014
-        },
-        {
-            "airport_code": "AMS",
-            "airport_name": "Amsterdam Airport Schiphol",
-            "city": "Amsterdam",
-            "country": "NL",
-            "latitude": 52.30860138,
-            "longitude": 4.76388979
-        },
-        {
-            "airport_code": "CUN",
-            "airport_name": "Cancun International Airport",
-            "city": "Cancun",
-            "country": "MX",
-            "latitude": 21.03650093,
-            "longitude": -86.87709808
-        },
-        {
-            "airport_code": "DBV",
-            "airport_name": "Dubrovnik Airport",
-            "city": "Dubrovnik",
-            "country": "HR",
-            "latitude": 42.56140137,
-            "longitude": 18.26819992
-        },
-        {
             "airport_code": "ZRH",
             "airport_name": "Zurich Airport",
             "city": "Zurich",
             "country": "CH",
             "latitude": 47.46469879,
             "longitude": 8.54916954
+        },
+        {
+            "airport_code": "GVA",
+            "airport_name": "Geneva Cointrin International Airport",
+            "city": "Geneva",
+            "country": "CH",
+            "latitude": 46.23809814,
+            "longitude": 6.10895014
+        },
+        {
+            "airport_code": "DFW",
+            "airport_name": "Dallas Fort Worth International Airport",
+            "city": "Dallas-Fort Worth",
+            "country": "US",
+            "latitude": 32.89680099,
+            "longitude": -97.03800201
+        },
+        {
+            "airport_code": "NRT",
+            "airport_name": "Narita International Airport",
+            "city": "Tokyo",
+            "country": "JP",
+            "latitude": 35.76470184,
+            "longitude": 140.38600159
         },
         {
             "airport_code": "IST",
@@ -170,20 +58,68 @@
             "longitude": 28.752
         },
         {
-            "airport_code": "CLT",
-            "airport_name": "Charlotte Douglas International Airport",
-            "city": "Charlotte",
-            "country": "US",
-            "latitude": 35.2140007,
-            "longitude": -80.94309998
+            "airport_code": "JTR",
+            "airport_name": "Santorini Airport",
+            "city": "Santorini Island",
+            "country": "GR",
+            "latitude": 36.39920044,
+            "longitude": 25.47929955
         },
         {
-            "airport_code": "LGW",
-            "airport_name": "London Gatwick Airport",
+            "airport_code": "SEA",
+            "airport_name": "Seattle Tacoma International Airport",
+            "city": "Seattle",
+            "country": "US",
+            "latitude": 47.44900131,
+            "longitude": -122.30899811
+        },
+        {
+            "airport_code": "PDX",
+            "airport_name": "Portland International Airport",
+            "city": "Portland",
+            "country": "US",
+            "latitude": 45.58869934,
+            "longitude": -122.5979996
+        },
+        {
+            "airport_code": "LAX",
+            "airport_name": "Los Angeles International Airport",
+            "city": "Los Angeles",
+            "country": "US",
+            "latitude": 33.94250107,
+            "longitude": -118.4079971
+        },
+        {
+            "airport_code": "LHR",
+            "airport_name": "London Heathrow Airport",
             "city": "London",
             "country": "GB",
-            "latitude": 51.14810181,
-            "longitude": -0.19027799
+            "latitude": 51.47060013,
+            "longitude": -0.461941
+        },
+        {
+            "airport_code": "AUS",
+            "airport_name": "Austin Bergstrom International Airport",
+            "city": "Austin",
+            "country": "US",
+            "latitude": 30.19449997,
+            "longitude": -97.66989899
+        },
+        {
+            "airport_code": "EWR",
+            "airport_name": "Newark Liberty International Airport",
+            "city": "Newark",
+            "country": "US",
+            "latitude": 40.69250107,
+            "longitude": -74.16870117
+        },
+        {
+            "airport_code": "ATH",
+            "airport_name": "Eleftherios Venizelos International Airport",
+            "city": "Athens",
+            "country": "GR",
+            "latitude": 37.93640137,
+            "longitude": 23.94449997
         },
         {
             "airport_code": "BOS",
@@ -202,52 +138,20 @@
             "longitude": 54.65110016
         },
         {
-            "airport_code": "AUS",
-            "airport_name": "Austin Bergstrom International Airport",
-            "city": "Austin",
-            "country": "US",
-            "latitude": 30.19449997,
-            "longitude": -97.66989899
+            "airport_code": "CUN",
+            "airport_name": "Cancun International Airport",
+            "city": "Cancun",
+            "country": "MX",
+            "latitude": 21.03650093,
+            "longitude": -86.87709808
         },
         {
-            "airport_code": "PDX",
-            "airport_name": "Portland International Airport",
-            "city": "Portland",
-            "country": "US",
-            "latitude": 45.58869934,
-            "longitude": -122.5979996
-        },
-        {
-            "airport_code": "BGO",
-            "airport_name": "Bergen Airport Flesland",
-            "city": "Bergen",
-            "country": "NO",
-            "latitude": 60.29339981,
-            "longitude": 5.21814013
-        },
-        {
-            "airport_code": "SVG",
-            "airport_name": "Stavanger Airport Sola",
-            "city": "Stavanger",
-            "country": "NO",
-            "latitude": 58.87670136,
-            "longitude": 5.63778019
-        },
-        {
-            "airport_code": "NRT",
-            "airport_name": "Narita International Airport",
-            "city": "Tokyo",
-            "country": "JP",
-            "latitude": 35.76470184,
-            "longitude": 140.38600159
-        },
-        {
-            "airport_code": "SEA",
-            "airport_name": "Seattle Tacoma International Airport",
-            "city": "Seattle",
-            "country": "US",
-            "latitude": 47.44900131,
-            "longitude": -122.30899811
+            "airport_code": "AMD",
+            "airport_name": "Sardar Vallabhbhai Patel International Airport",
+            "city": "Ahmedabad",
+            "country": "IN",
+            "latitude": 23.07719994,
+            "longitude": 72.63469696
         },
         {
             "airport_code": "MKE",
@@ -258,60 +162,52 @@
             "longitude": -87.89659882
         },
         {
-            "airport_code": "GVA",
-            "airport_name": "Geneva Cointrin International Airport",
-            "city": "Geneva",
-            "country": "CH",
-            "latitude": 46.23809814,
-            "longitude": 6.10895014
-        },
-        {
-            "airport_code": "SZX",
-            "airport_name": "Shenzhen Bao'an International Airport",
-            "city": "Shenzhen",
-            "country": "CN",
-            "latitude": 22.63929939,
-            "longitude": 113.81099701
-        },
-        {
-            "airport_code": "HKG",
-            "airport_name": "Chek Lap Kok International Airport",
-            "city": "Hong Kong",
-            "country": "HK",
-            "latitude": 22.30890083,
-            "longitude": 113.91500092
-        },
-        {
-            "airport_code": "BRU",
-            "airport_name": "Brussels Airport",
-            "city": "Brussels",
-            "country": "BE",
-            "latitude": 50.90140152,
-            "longitude": 4.48443985
-        },
-        {
-            "airport_code": "OSL",
-            "airport_name": "Oslo Gardermoen Airport",
-            "city": "Oslo",
-            "country": "NO",
-            "latitude": 60.19390106,
-            "longitude": 11.10039997
-        },
-        {
-            "airport_code": "IAH",
-            "airport_name": "George Bush Intercontinental Houston Airport",
-            "city": "Houston",
+            "airport_code": "DEN",
+            "airport_name": "Denver International Airport",
+            "city": "Denver",
             "country": "US",
-            "latitude": 29.9843998,
-            "longitude": -95.34140015
+            "latitude": 39.86169815,
+            "longitude": -104.67299652
         },
         {
-            "airport_code": "AMD",
-            "airport_name": "Sardar Vallabhbhai Patel International Airport",
-            "city": "Ahmedabad",
-            "country": "IN",
-            "latitude": 23.07719994,
-            "longitude": 72.63469696
+            "airport_code": "PHX",
+            "airport_name": "Phoenix Sky Harbor International Airport",
+            "city": "Phoenix",
+            "country": "US",
+            "latitude": 33.43429947,
+            "longitude": -112.01200104
+        },
+        {
+            "airport_code": "SFO",
+            "airport_name": "San Francisco International Airport",
+            "city": "San Francisco",
+            "country": "US",
+            "latitude": 37.61899948,
+            "longitude": -122.375
+        },
+        {
+            "airport_code": "SAN",
+            "airport_name": "San Diego International Airport",
+            "city": "San Diego",
+            "country": "US",
+            "latitude": 32.73360062,
+            "longitude": -117.19000244
+        },
+        {
+            "airport_code": "LGA",
+            "airport_name": "La Guardia Airport",
+            "city": "New York",
+            "country": "US",
+            "latitude": 40.77719879,
+            "longitude": -73.87259674
+        },
+        {
+            "airport_code": "CLT",
+            "airport_name": "Charlotte Douglas International Airport",
+            "city": "Charlotte",
+            "country": "US",
+            "latitude": 35.2140007,
+            "longitude": -80.94309998
         },
         {
             "airport_code": "REP",
@@ -330,12 +226,84 @@
             "longitude": 100.60700226
         },
         {
-            "airport_code": "BKK",
-            "airport_name": "Suvarnabhumi Airport",
-            "city": "Bangkok",
-            "country": "TH",
-            "latitude": 13.68109989,
-            "longitude": 100.74700165
+            "airport_code": "BRU",
+            "airport_name": "Brussels Airport",
+            "city": "Brussels",
+            "country": "BE",
+            "latitude": 50.90140152,
+            "longitude": 4.48443985
+        },
+        {
+            "airport_code": "OSL",
+            "airport_name": "Oslo Gardermoen Airport",
+            "city": "Oslo",
+            "country": "NO",
+            "latitude": 60.19390106,
+            "longitude": 11.10039997
+        },
+        {
+            "airport_code": "BGO",
+            "airport_name": "Bergen Airport Flesland",
+            "city": "Bergen",
+            "country": "NO",
+            "latitude": 60.29339981,
+            "longitude": 5.21814013
+        },
+        {
+            "airport_code": "CMI",
+            "airport_name": "University of Illinois Willard Airport",
+            "city": "Champaign/Urbana",
+            "country": "US",
+            "latitude": 40.03919983,
+            "longitude": -88.27809906
+        },
+        {
+            "airport_code": "DBV",
+            "airport_name": "Dubrovnik Airport",
+            "city": "Dubrovnik",
+            "country": "HR",
+            "latitude": 42.56140137,
+            "longitude": 18.26819992
+        },
+        {
+            "airport_code": "SVG",
+            "airport_name": "Stavanger Airport Sola",
+            "city": "Stavanger",
+            "country": "NO",
+            "latitude": 58.87670136,
+            "longitude": 5.63778019
+        },
+        {
+            "airport_code": "LUC",
+            "airport_name": "Laucala Island Airport",
+            "city": "Laucala Island",
+            "country": "FJ",
+            "latitude": -16.74810028,
+            "longitude": -179.66700745
+        },
+        {
+            "airport_code": "CPH",
+            "airport_name": "Copenhagen Kastrup Airport",
+            "city": "Copenhagen",
+            "country": "DK",
+            "latitude": 55.61790085,
+            "longitude": 12.65600014
+        },
+        {
+            "airport_code": "AMS",
+            "airport_name": "Amsterdam Airport Schiphol",
+            "city": "Amsterdam",
+            "country": "NL",
+            "latitude": 52.30860138,
+            "longitude": 4.76388979
+        },
+        {
+            "airport_code": "IAH",
+            "airport_name": "George Bush Intercontinental Houston Airport",
+            "city": "Houston",
+            "country": "US",
+            "latitude": 29.9843998,
+            "longitude": -95.34140015
         }
     ]
 }
