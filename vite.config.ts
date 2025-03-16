@@ -15,7 +15,7 @@ export default defineConfig({
     allowedHosts: true
   },
   build: {
-    outDir: 'dist',
+    outDir: 'build',
     minify: 'terser',
   },
 });
