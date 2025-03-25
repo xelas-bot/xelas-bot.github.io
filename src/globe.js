@@ -85,15 +85,14 @@ function init() {
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dynamicDampingFactor = 0.01;
-  controls.enablePan = false;
+  controls.enablePan = true;
   controls.minDistance = 200;
   controls.maxDistance = 500;
-  controls.rotateSpeed = 0.8;
+  controls.rotateSpeed = 0.6;
   controls.zoomSpeed = 1;
   controls.autoRotate = false;
 
-  controls.minPolarAngle = Math.PI / 3.5;
-  controls.maxPolarAngle = Math.PI - Math.PI / 3;
+  // controls.minPolarAngle = Math.PI / 3.5;
 
   window.addEventListener("resize", onWindowResize, false);
   document.addEventListener("mousemove", onMouseMove);
@@ -214,8 +213,8 @@ function initGlobe() {
 }
 
 function onMouseMove(event) {
-  mouseX = event.clientX - windowHalfX;
-  mouseY = event.clientY - windowHalfY;
+  // mouseX = event.clientX - windowHalfX;
+  // mouseY = event.clientY - windowHalfY;
   // console.log("x: " + mouseX + " y: " + mouseY);
 }
 
@@ -230,12 +229,12 @@ function onWindowResize() {
 function animate() {
   if (!isPageVisible) return;
   
-  camera.position.x +=
-    Math.abs(mouseX) <= windowHalfX / 2
-      ? (mouseX / 2 - camera.position.x) * 0.005
-      : 0;
-  camera.position.y += (-mouseY / 2 - camera.position.y) * 0.005;
-  camera.lookAt(scene.position);
+  // camera.position.x +=
+  //   Math.abs(mouseX) <= windowHalfX / 2
+  //     ? (mouseX / 2 - camera.position.x) * 0.005
+  //     : 0;
+  // camera.position.y += (-mouseY / 2 - camera.position.y) * 0.005;
+  // camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
   animationFrameId = requestAnimationFrame(animate);
