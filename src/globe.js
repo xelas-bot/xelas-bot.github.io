@@ -137,6 +137,203 @@ function resumeAnimation() {
   }
 }
 
+/**
+ * Adjusts airport coordinates to prevent overlapping markers on the globe
+ * @param {Array} airports - The array of airport objects
+ * @param {Object} options - Configuration options
+ * @returns {Array} - The array of airports with adjusted coordinates and no duplicates
+ */
+function adjustOverlappingAirports(airports, options = {}) {
+  // Default options
+  const defaults = {
+    distanceThreshold: 1.0,  // Minimum distance in degrees to consider overlap
+    adjustmentAmount: 0.3,   // How much to move an airport in degrees
+    maxIterations: 8         // Maximum number of adjustment passes
+  };
+  
+  const config = { ...defaults, ...options };
+  
+  // Make a deep copy of airports to avoid modifying the original
+  const adjustedAirports = JSON.parse(JSON.stringify(airports));
+  
+  // Run multiple passes to handle cascading adjustments
+  for (let iteration = 0; iteration < config.maxIterations; iteration++) {
+    let adjustmentsMade = false;
+    
+    // For each pair of airports
+    for (let i = 0; i < adjustedAirports.length; i++) {
+      for (let j = i + 1; j < adjustedAirports.length; j++) {
+        const airport1 = adjustedAirports[i];
+        const airport2 = adjustedAirports[j];
+        
+        // Calculate Manhattan distance (sum of absolute differences)
+        const latDiff = Math.abs(airport1.latitude - airport2.latitude);
+        const lngDiff = Math.abs(airport1.longitude - airport2.longitude);
+        const distance = latDiff + lngDiff;
+        
+        // If airports are too close
+        if (distance < config.distanceThreshold) {
+          // Move the second airport "below" the first (decrease latitude)
+          airport2.latitude -= config.adjustmentAmount;
+          
+          console.log(`Adjusted ${airport2.airport_code} to avoid overlap with ${airport1.airport_code}`);
+          adjustmentsMade = true;
+        }
+      }
+    }
+    
+    // If no adjustments were made in this iteration, we can stop
+    if (!adjustmentsMade) break;
+  }
+  
+  // Deduplicate airports by IATA code
+  const uniqueAirportMap = new Map();
+  
+  // Add airports to the map using airport_code as the key
+  adjustedAirports.forEach(airport => {
+    if (!uniqueAirportMap.has(airport.airport_code)) {
+      uniqueAirportMap.set(airport.airport_code, airport);
+    } else {
+      console.log(`Removed duplicate airport: ${airport.airport_code}`);
+    }
+  });
+  
+  // Convert map values back to array
+  const deduplicatedAirports = Array.from(uniqueAirportMap.values());
+  
+  console.log(`Removed ${adjustedAirports.length - deduplicatedAirports.length} duplicate airports`);
+  
+  return deduplicatedAirports;
+}
+
+// Add this function to determine the best orientation for each airport label
+function calculateLabelOrientations(airports, options = {}) {
+  // Default options
+  const defaults = {
+    proximityThreshold: 10,  // Longitude difference threshold to consider proximity
+  };
+  
+  const config = { ...defaults, ...options };
+  
+  // Make a deep copy to avoid modifying the original
+  const airportsWithOrientations = JSON.parse(JSON.stringify(airports));
+  
+  // Sort airports by longitude to make adjacency checks easier
+  airportsWithOrientations.sort((a, b) => a.longitude - b.longitude);
+  
+  // Initialize all orientations to 'right' by default
+  airportsWithOrientations.forEach(airport => {
+    airport.labelOrientation = 'right';
+  });
+  
+  // For each airport, check nearby airports and adjust orientations
+  for (let i = 0; i < airportsWithOrientations.length; i++) {
+    const airport = airportsWithOrientations[i];
+    
+    // Only look at airports ahead in the array (higher longitude)
+    for (let j = i + 1; j < airportsWithOrientations.length; j++) {
+      const nextAirport = airportsWithOrientations[j];
+      
+      // If airports are close in longitude
+      if (Math.abs(nextAirport.longitude - airport.longitude) < config.proximityThreshold) {
+        // If they're also close in latitude
+        if (Math.abs(nextAirport.latitude - airport.latitude) < config.proximityThreshold) {
+          // Alternate the orientation of adjacent airports
+          if (airport.labelOrientation === 'right') {
+            nextAirport.labelOrientation = 'left';
+          } else if (airport.labelOrientation === 'left') {
+            nextAirport.labelOrientation = 'right';
+          } else if (airport.labelOrientation === 'top') {
+            nextAirport.labelOrientation = 'bottom';
+          } else {
+            nextAirport.labelOrientation = 'top';
+          }
+          
+          // If they're very close, use top/bottom orientation instead
+          if (Math.abs(nextAirport.longitude - airport.longitude) < config.proximityThreshold / 2) {
+            if (nextAirport.latitude > airport.latitude) {
+              airport.labelOrientation = 'bottom';
+              nextAirport.labelOrientation = 'top';
+            } else {
+              airport.labelOrientation = 'top';
+              nextAirport.labelOrientation = 'bottom';
+            }
+          }
+          
+          console.log(`Adjusted label orientation for ${nextAirport.airport_code} to ${nextAirport.labelOrientation} (near ${airport.airport_code})`);
+        }
+      }
+    }
+    
+    // Special case for DFW as in your original code
+    if (airport.airport_code === "DFW") {
+      airport.labelOrientation = "top";
+    }
+  }
+  
+  return airportsWithOrientations;
+}
+
+/**
+ * Deduplicates flight routes based on source and destination airport pairs
+ * @param {Array} flights - The array of flight objects
+ * @param {Object} options - Configuration options
+ * @returns {Array} - The array of flights with no duplicate routes
+ */
+function deduplicateFlights(flights, options = {}) {
+  // Default options
+  const defaults = {
+    preserveMetadata: true  // Whether to combine metadata from duplicates
+  };
+  
+  const config = { ...defaults, ...options };
+  
+  // Create a map to store unique flights
+  const uniqueFlightsMap = new Map();
+  
+  // Process each flight in the array
+  flights.forEach(flight => {
+    // Create a unique key using source and destination airport codes
+    const routeKey = `${flight.airport_code_src}-${flight.airport_code_dst}`;
+    
+    if (!uniqueFlightsMap.has(routeKey)) {
+      // First time seeing this route - add it as is
+      uniqueFlightsMap.set(routeKey, flight);
+    } else if (config.preserveMetadata) {
+      // We've seen this route before - combine metadata
+      const existingFlight = uniqueFlightsMap.get(routeKey);
+      
+      // Combine flight dates (avoiding duplicates)
+      const allDates = [...existingFlight.flight_takeoff_date];
+      flight.flight_takeoff_date.forEach(date => {
+        if (!allDates.includes(date)) {
+          allDates.push(date);
+        }
+      });
+      existingFlight.flight_takeoff_date = allDates;
+      
+      // Combine flight numbers (avoiding duplicates)
+      const allFlightNumbers = [...existingFlight.flight_number];
+      flight.flight_number.forEach(num => {
+        if (!allFlightNumbers.includes(num)) {
+          allFlightNumbers.push(num);
+        }
+      });
+      existingFlight.flight_number = allFlightNumbers;
+      
+      // Update the map with the combined flight
+      uniqueFlightsMap.set(routeKey, existingFlight);
+    }
+  });
+  
+  // Convert map values back to array
+  const deduplicatedFlights = Array.from(uniqueFlightsMap.values());
+  
+  console.log(`Removed ${flights.length - deduplicatedFlights.length} duplicate flights`);
+  
+  return deduplicatedFlights;
+}
+
 // SECTION Globe
 function initGlobe() {
   // Initialize the Globe
@@ -160,9 +357,36 @@ function initGlobe() {
       } else return "rgba(255,255,255, 0.7)";
     });
 
+  // Adjust airport positions to prevent overlap
+  const adjustedAirports = adjustOverlappingAirports(airportHistory.airports, {
+    distanceThreshold: 1.0,
+    adjustmentAmount: 0.3
+  });
+
+  // Calculate optimal label orientations
+  const airportsWithOrientations = calculateLabelOrientations(adjustedAirports, {
+    proximityThreshold: 5.0
+  });
+
+  // Deduplicate flights to prevent overlapping arcs
+  const deduplicatedFlights = deduplicateFlights(travelHistory.flights, {
+    preserveMetadata: true
+  });
+  
+  // Create new objects with the adjusted data
+  const adjustedAirportHistory = {
+    ...airportHistory,
+    airports: airportsWithOrientations
+  };
+  
+  const adjustedTravelHistory = {
+    ...travelHistory,
+    flights: deduplicatedFlights
+  };
+
   // NOTE Arc animations are followed after the globe enters the scene
   setTimeout(() => {
-    Globe.arcsData(travelHistory.flights)
+    Globe.arcsData(adjustedTravelHistory.flights)
       .arcStartLat((e) => e.flight_route.src_airport.latitude)
       .arcStartLng((e) => e.flight_route.src_airport.longitude)
       .arcEndLat((e) => e.flight_route.dst_airport.latitude)
@@ -177,19 +401,20 @@ function initGlobe() {
       .arcDashGap(1)
       .arcDashAnimateTime(1000)
       .arcDashInitialGap((e) => 1)
-      .labelsData(airportHistory.airports)
+      .labelsData(adjustedAirportHistory.airports)
       .labelLat("latitude")
       .labelLng("longitude")
       .labelColor(() => "#ffcb21")
       .labelDotOrientation((e) => {
-        return e.airport_code === "DFW" ? "top" : "right";
+        // Use the calculated orientation instead of the fixed one
+        return e.labelOrientation || "right";
       })
       .labelDotRadius(0.3)
       .labelSize((e) => 1.0)
       .labelText("city")
       .labelResolution(6)
       .labelAltitude(0.01)
-      .pointsData(airportHistory.airports)
+      .pointsData(adjustedAirportHistory.airports)
       .pointLat("lat")
       .pointLng("lng")
       .pointColor(() => "#ffffff")
